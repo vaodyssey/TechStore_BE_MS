@@ -14,7 +14,7 @@ namespace TechStore.Auth.Controllers
         {
             _authService = authService;
         }
-        [HttpPost("/auth/register")]
+        [HttpPost("/api/auth/register")]
         public IActionResult Register([FromBody] Payload.RegisterRequest request)
         {
             if (!ModelState.IsValid)
@@ -25,7 +25,7 @@ namespace TechStore.Auth.Controllers
             return StatusCode(result.ResponseCode, result);
 
         }
-        [HttpPost("/auth/login")]
+        [HttpPost("/api/auth/login")]
         public IActionResult Login([FromBody] Payload.LoginRequest request)
         {
             if (!ModelState.IsValid)

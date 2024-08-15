@@ -9,6 +9,7 @@ namespace TechStore.Products.Services.Impl
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private GetByService _getByService;
+        private GetByIdService _getByIdService; 
         public ProductService(IUnitOfWork unitOfWork, IMapper mapper) { 
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -21,11 +22,12 @@ namespace TechStore.Products.Services.Impl
 
         public ServiceResponse GetById(int id)
         {
-            throw new NotImplementedException();
+            return _getByIdService.Handle(id);
         }
         private void InitializeChildServices()
         {
             _getByService = new GetByService(_unitOfWork,_mapper);
+            _getByIdService = new GetByIdService(_unitOfWork, _mapper);
         }
     }
 }

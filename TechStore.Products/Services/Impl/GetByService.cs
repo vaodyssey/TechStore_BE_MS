@@ -37,8 +37,7 @@ namespace TechStore.Products.Services.Impl
         }
         private void ResetPreviousSearchResult()
         {
-            _productDtos = new List<ProductDto> ();
-            //_products = new List<Product>();
+            _productDtos = new List<ProductDto> ();            
         }
         private void HandleSearch()
         {
@@ -111,16 +110,7 @@ namespace TechStore.Products.Services.Impl
                 Message = "Successfully retrieved all products with given configuration.",
                 Data = _productDtos!
             };
-        }
-        private ServiceResponse InvalidCredentialsResult()
-        {
-            return new ServiceResponse
-            {
-                ResponseCode = ResponseCodes.BAD_REQUEST,
-                Message = "Either the username or the password is invalid. Please try again.",
-                Data = null!
-            };
-        }
+        }   
         private ServiceResponse InternalServerErrorResult(Exception e)
         {
             return new ServiceResponse

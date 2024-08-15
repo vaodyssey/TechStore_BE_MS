@@ -21,12 +21,12 @@ namespace TechStore.Products.Controllers
             [FromQuery] int minPrice = 0,
             [FromQuery] int maxPrice = 0,
             [FromQuery] string sortBy = null,
-            [FromQuery] string sortOrder = null,            
+            [FromQuery] string sortOrder = null,
             [FromQuery] int pageNumber = 0,
             [FromQuery] int pageSize = 0
-            
+
             )
-        {           
+        {
             var result = _productService.GetBy(new Payload.GetByRequest
             {
                 SearchTerm = searchTerm,
@@ -39,6 +39,13 @@ namespace TechStore.Products.Controllers
                 SortOrder = sortOrder
             }
             );
+            return StatusCode(result.ResponseCode, result);
+
+        }
+        [HttpGet("/products/{id}")]
+        public IActionResult Register([FromRoute] int id = 0)
+        {
+            var result = _productService.GetById(id);
             return StatusCode(result.ResponseCode, result);
 
         }

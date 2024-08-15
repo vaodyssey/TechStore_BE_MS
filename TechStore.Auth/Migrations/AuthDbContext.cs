@@ -8,18 +8,7 @@ namespace TechStore.Auth.Migrations
         public AuthDbContext() { }
         public AuthDbContext(DbContextOptions<AuthDbContext> options): base(options){ }
         public DbSet<User> Users { get; set; }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(GetConnectionString());
-        //}
-        //private string GetConnectionString()
-        //{
-        //    IConfiguration configuration = new ConfigurationBuilder()
-        //        .AddJsonFile("appsettings.json", true, true)
-        //        .Build();
-        //    return configuration.GetConnectionString("Default");
-        //}
+     
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
