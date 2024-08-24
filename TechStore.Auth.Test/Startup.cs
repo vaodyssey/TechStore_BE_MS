@@ -5,12 +5,12 @@ using Microsoft.VisualStudio.TestPlatform.TestHost;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TechStore.Auth.Migrations;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Services;
-using TechStore.Auth.Services.Impl;
 using TechStore.Auth.Utils.JWT;
 namespace TechStore.Auth.Test
 {
@@ -18,10 +18,10 @@ namespace TechStore.Auth.Test
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IAuthService,Services.Impl.AuthService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IJWTUtils, JWTUtils>();
-            services.AddAutoMapper(typeof(Program));
+            services.AddAutoMapper(Assembly.Load("TechStore.Auth"));
             services.AddDbContext<AuthDbContext>(
                 options =>  
                     options.UseSqlServer(GetConnectionString(),
