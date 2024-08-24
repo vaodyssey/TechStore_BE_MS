@@ -9,14 +9,19 @@ namespace TechStore.Products.Configs
     {
         public AutoMapperConfig()
         {
-            RegisterRequestAndUser();
+            ProductAndProductDto();
+            BrandAndBrandDto();
 
         }
-
-        private void RegisterRequestAndUser()
+        private void ProductAndProductDto()
         {
             CreateMap<Product, ProductDto>().ForMember(dest => dest.BrandName,option => option.Ignore());
         }
+        private void BrandAndBrandDto()
+        {
+            CreateMap<Brand, BrandDto>();
+        }
+
     }
 
 }

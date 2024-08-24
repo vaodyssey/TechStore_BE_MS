@@ -59,6 +59,12 @@ namespace TechStore.Products.Services.Impl
         {
             _products = _unitOfWork.ProductRepository.Get(product => product.Name.Contains(_request.SearchTerm)).ToList();
         }
+        private void FilterByBrand()
+        {
+            if (_products == null) //runs when previous conditions are not met (SearchTerm, MinMaxPrice).
+                _products = _unitOfWork.ProductRepository.Get().ToList();
+            _products = _products.Where(product => product.Brand.Name == _request.Label).ToList();
+        }
         private void FilterByPriceRange()
         {
             if (_products==null) //runs when previous conditions are not met (SearchTerm, MinMaxPrice).
@@ -67,12 +73,7 @@ namespace TechStore.Products.Services.Impl
             (product.Price >= _request.MinPrice)
             && (product.Price <= _request.MaxPrice)).ToList();            
         }
-        private void FilterByBrand()
-        {
-            if (_products==null) //runs when previous conditions are not met (SearchTerm, MinMaxPrice).
-                _products = _unitOfWork.ProductRepository.Get().ToList();
-            _products = _products.Where(product => product.Brand.Name== _request.Label).ToList();
-        }
+      
         private void SortResultBy()
         {
             if (_products==null) //runs when previous conditions are not met (SearchTerm, MinMaxPrice).

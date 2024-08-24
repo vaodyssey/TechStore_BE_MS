@@ -8,13 +8,13 @@ using TechStore.Auth.Repositories;
 namespace TechStore.Auth.Utils.JWT
 {
     public class JWTUtils : IJWTUtils
-    {
-        private readonly IConfiguration _configuration;
+    {        
         private readonly IUnitOfWork _unitOfWork;
-        public JWTUtils(IConfiguration configuration, IUnitOfWork unitOfWork)
-        {
-            _configuration = configuration;
+        private IConfiguration _configuration;
+        public JWTUtils(IUnitOfWork unitOfWork)
+        {            
             _unitOfWork = unitOfWork;
+            InitializeConfiguration();
         }
         public string GenerateJSONWebToken(User user)
         {
@@ -46,5 +46,14 @@ namespace TechStore.Auth.Utils.JWT
             if (user == null) return false;
             return true;
         }
+        private void InitializeConfiguration()
+        {
+           
+                _configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                            .AddJsonFile("appsettings.json", true, true)
+                           .Build();                
+            }
+        
     }
 }

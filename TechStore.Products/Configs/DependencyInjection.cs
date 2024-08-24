@@ -61,7 +61,8 @@ namespace TechStore.Products.Configs
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
 
-            services.AddScoped<IProductService, ProductService>();            
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IBrandService, BrandService>();
             services.AddAutoMapper(typeof(Program));
             return services;
         }

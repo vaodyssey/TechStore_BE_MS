@@ -14,7 +14,7 @@ namespace TechStore.Products.Controllers
         {
             _productService = authService;
         }
-        [HttpGet("/products")]
+        [HttpGet("/api/products")]
         public IActionResult Register(
             [FromQuery] string searchTerm = null,
             [FromQuery] string label = null,
@@ -42,7 +42,7 @@ namespace TechStore.Products.Controllers
             return StatusCode(result.ResponseCode, result);
 
         }
-        [HttpGet("/products/{id}")]
+        [HttpGet("/api/products/{id}")]
         public IActionResult Register([FromRoute] int id = 0)
         {
             var result = _productService.GetById(id);
