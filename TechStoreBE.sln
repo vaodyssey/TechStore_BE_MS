@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechStore.Products", "TechS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechStore.Auth.Test", "TechStore.Auth.Test\TechStore.Auth.Test.csproj", "{6D8C2FE1-625B-49B8-9AA3-540C43602453}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechStore.Products.Test", "TechStore.Products.Test\TechStore.Products.Test.csproj", "{8C461024-B5C5-43B1-9C15-ED9EC36770A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6D8C2FE1-625B-49B8-9AA3-540C43602453}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D8C2FE1-625B-49B8-9AA3-540C43602453}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D8C2FE1-625B-49B8-9AA3-540C43602453}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C461024-B5C5-43B1-9C15-ED9EC36770A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C461024-B5C5-43B1-9C15-ED9EC36770A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C461024-B5C5-43B1-9C15-ED9EC36770A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C461024-B5C5-43B1-9C15-ED9EC36770A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

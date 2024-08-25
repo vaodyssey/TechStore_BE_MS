@@ -9,7 +9,7 @@ using TechStore.Auth.Payload;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Services;
 
-namespace TechStore.Auth.Test.AuthService
+namespace TechStore.Auth.Test
 {
     public class TokenValidationServiceTest
     {
@@ -25,7 +25,7 @@ namespace TechStore.Auth.Test.AuthService
         {
             var request = PrepareLoginRequest();
             var loginRes = _service.Login(request);
-            var tokenValidRes = _service.ValidateToken((string)loginRes.Data);            
+            var tokenValidRes = _service.ValidateToken((string)loginRes.Data);
             AssertTokenValid(tokenValidRes);
         }
         private void AssertTokenValid(ServiceResponse response)

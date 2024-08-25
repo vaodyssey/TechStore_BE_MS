@@ -6,7 +6,7 @@ using TechStore.Auth.Payload;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Services;
 using Xunit.Abstractions;
-namespace TechStore.Auth.Test.AuthService;
+namespace TechStore.Auth.Test;
 
 [TestCaseOrderer("TechStore.Auth.Test.TestCaseOrderer.AuthServiceTestOrderer", "TechStore.Auth.Test")]
 public class LoginServiceTest

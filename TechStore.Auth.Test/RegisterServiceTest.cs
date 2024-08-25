@@ -8,9 +8,9 @@ using TechStore.Auth.Payload;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Services;
 
-namespace TechStore.Auth.Test.AuthService
+namespace TechStore.Auth.Test
 {
-  
+
     public class RegisterServiceTest
     {
         private IAuthService _service;
@@ -31,7 +31,7 @@ namespace TechStore.Auth.Test.AuthService
         [Fact]
         public void T1_RegistrationDuplicatedEmail()
         {
-            var request = PrepareRegisterRequest();            
+            var request = PrepareRegisterRequest();
             _service.Register(request);
             var duplicatedResult = _service.Register(request);
             AssertRegistrationDuplicated(duplicatedResult);
@@ -57,8 +57,8 @@ namespace TechStore.Auth.Test.AuthService
         private void AssertRegistrationDuplicated(ServiceResponse response)
         {
             Assert.Equal(400, response.ResponseCode);
-            
-            Assert.Equal("This email is taken. Please try again.",response.Message);
+
+            Assert.Equal("This email is taken. Please try again.", response.Message);
         }
         private void CleanupAfterRegistration(RegisterRequest request)
         {
