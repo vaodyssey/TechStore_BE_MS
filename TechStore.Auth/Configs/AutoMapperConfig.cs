@@ -9,12 +9,21 @@ namespace TechStore.Auth.Configs
         public AutoMapperConfig()
         {
             RegisterRequestAndUser();
-            
+            UserAndUserDTO();
+            UpdateUserRequestAndUser();
         }
 
         private void RegisterRequestAndUser()
         {
             CreateMap<RegisterRequest, User>();
+        }
+        private void UserAndUserDTO()
+        {
+            CreateMap<User, UserDTO>();
+        }
+        private void UpdateUserRequestAndUser()
+        {
+            CreateMap<UpdateUserRequest, User>();
         }
     }
 

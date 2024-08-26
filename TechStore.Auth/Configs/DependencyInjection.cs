@@ -8,7 +8,8 @@ using TechStore.Auth.Constants;
 using TechStore.Auth.Migrations;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Services;
-using TechStore.Auth.Services.Impl;
+using TechStore.Auth.Services.Impl.AuthService;
+using TechStore.Auth.Services.Impl.UserService;
 using TechStore.Auth.Utils.JWT;
 
 namespace TechStore.Auth.Configs
@@ -59,9 +60,9 @@ namespace TechStore.Auth.Configs
         }
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-
             services.AddScoped<IAuthService, AuthService>();
-            services.AddScoped<IJWTUtils, JWTUtils>();
+            services.AddScoped<IUserService,UserService>();
+            services.AddScoped<IJWTUtils, JWTUtils>();            
             services.AddAutoMapper(typeof(Program));
             return services;
         }

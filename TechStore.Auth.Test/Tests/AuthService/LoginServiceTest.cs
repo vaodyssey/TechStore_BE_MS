@@ -6,17 +6,20 @@ using TechStore.Auth.Payload;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Services;
 using Xunit.Abstractions;
-namespace TechStore.Auth.Test;
 
-[TestCaseOrderer("TechStore.Auth.Test.TestCaseOrderer.AuthServiceTestOrderer", "TechStore.Auth.Test")]
+
+namespace TechStore.Auth.Test.Tests.AuthService;
+[TestCaseOrderer(
+    ordererTypeName: "TechStore.Auth.Test.Orderers.TestCaseOrderer",
+    ordererAssemblyName: "TechStore.Auth.Test"
+)]
+[Collection("AuthServiceTestCollection")]
 public class LoginServiceTest
 {
     private IAuthService _service;
-    private IUnitOfWork _unitOfWork;
-    public LoginServiceTest(IAuthService service, IUnitOfWork unitOfWork)
+    public LoginServiceTest(IAuthService service)
     {
         _service = service;
-        _unitOfWork = unitOfWork;
     }
 
     [Fact]

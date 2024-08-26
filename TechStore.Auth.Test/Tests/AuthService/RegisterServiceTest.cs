@@ -8,9 +8,12 @@ using TechStore.Auth.Payload;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Services;
 
-namespace TechStore.Auth.Test
+namespace TechStore.Auth.Test.Tests.AuthService
 {
-
+    [TestCaseOrderer(
+    ordererTypeName: "TechStore.Auth.Test.Orderers.TestCaseOrderer",
+    ordererAssemblyName: "TechStore.Auth.Test")]
+    [Collection("AuthServiceTestCollection")]
     public class RegisterServiceTest
     {
         private IAuthService _service;
@@ -26,7 +29,7 @@ namespace TechStore.Auth.Test
             var request = PrepareRegisterRequest();
             var result = _service.Register(request);
             AssertRegistrationSuccess(result, request);
-            CleanupAfterRegistration(request);
+            Cleanup(request);
         }
         [Fact]
         public void T1_RegistrationDuplicatedEmail()
@@ -35,7 +38,7 @@ namespace TechStore.Auth.Test
             _service.Register(request);
             var duplicatedResult = _service.Register(request);
             AssertRegistrationDuplicated(duplicatedResult);
-            CleanupAfterRegistration(request);
+            Cleanup(request);
         }
         private RegisterRequest PrepareRegisterRequest()
         {
@@ -60,7 +63,7 @@ namespace TechStore.Auth.Test
 
             Assert.Equal("This email is taken. Please try again.", response.Message);
         }
-        private void CleanupAfterRegistration(RegisterRequest request)
+        private void Cleanup(RegisterRequest request)
         {
             User user = _unitOfWork.UserRepository.Get(user => user.Email == request.Email).FirstOrDefault();
             _unitOfWork.UserRepository.Delete(user);

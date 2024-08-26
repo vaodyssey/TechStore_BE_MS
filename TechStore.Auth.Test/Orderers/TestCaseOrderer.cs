@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
-namespace TechStore.Auth.Test.TestCaseOrderer
+namespace TechStore.Auth.Test.Orderers
 {
-    public class AuthServiceTestOrderer : ITestCaseOrderer
+    public class TestCaseOrderer : ITestCaseOrderer
     {
         public IEnumerable<TTestCase> OrderTestCases<TTestCase>(IEnumerable<TTestCase> testCases) where TTestCase : ITestCase
         {

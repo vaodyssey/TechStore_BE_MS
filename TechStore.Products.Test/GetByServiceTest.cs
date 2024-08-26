@@ -88,7 +88,6 @@ namespace TechStore.Products.Test
             string productName = expandoObj[0].Name;
             Assert.Equal(200, response.ResponseCode);
             Assert.Contains("vivobook", productName.ToLower());
-
         }
         private void AssertGetByLabelSuccess(ServiceResponse response)
         {

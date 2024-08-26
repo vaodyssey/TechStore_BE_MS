@@ -4,7 +4,7 @@ using TechStore.Auth.Payload;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Utils.JWT;
 
-namespace TechStore.Auth.Services.Impl
+namespace TechStore.Auth.Services.Impl.AuthService
 {
     public class AuthService : IAuthService
     {
@@ -26,7 +26,7 @@ namespace TechStore.Auth.Services.Impl
         public ServiceResponse Login(LoginRequest request)
         {
             return _loginService.Handle(request);
-            
+
         }
 
         public ServiceResponse Register(RegisterRequest registerRequest)

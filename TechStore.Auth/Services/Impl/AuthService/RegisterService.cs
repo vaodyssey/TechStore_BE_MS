@@ -6,17 +6,18 @@ using TechStore.Auth.Payload;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Utils;
 
-namespace TechStore.Auth.Services.Impl
+namespace TechStore.Auth.Services.Impl.AuthService
 {
     public class RegisterService
     {
         private readonly IUnitOfWork _unitOfWork;
         private RegisterRequest _request;
         private readonly IMapper _mapper;
-        public RegisterService(IUnitOfWork unitOfWork,IMapper mapper) {
+        public RegisterService(IUnitOfWork unitOfWork, IMapper mapper)
+        {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-        }    
+        }
         public ServiceResponse Handle(RegisterRequest request)
         {
             try
@@ -25,13 +26,12 @@ namespace TechStore.Auth.Services.Impl
                 if (IsEmailTaken()) return EmailTakenResult();
                 RegisterNewUser();
                 return RegistrationSuccessfulResult();
-
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return InternalServerErrorResult(e);
             }
-           
+
         }
 
         private bool IsEmailTaken()
@@ -52,8 +52,8 @@ namespace TechStore.Auth.Services.Impl
             return new ServiceResponse
             {
                 ResponseCode = ResponseCodes.CREATE_SUCCESS,
-                Message="Successfully created an account.",
-                Data=null!
+                Message = "Successfully created an account.",
+                Data = null!
             };
         }
         private ServiceResponse EmailTakenResult()

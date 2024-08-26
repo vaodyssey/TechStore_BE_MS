@@ -3,7 +3,7 @@ using TechStore.Auth.Constants;
 using TechStore.Auth.Payload;
 using TechStore.Auth.Utils.JWT;
 
-namespace TechStore.Auth.Services.Impl
+namespace TechStore.Auth.Services.Impl.AuthService
 {
     public class ValidateTokenService
     {
@@ -19,7 +19,8 @@ namespace TechStore.Auth.Services.Impl
                 bool isTokenValid = _jwtUtils.IsTokenValid(token);
                 if (!isTokenValid) return TokenInvalidResult();
                 return TokenValidResult();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return InternalServerErrorResult(e);
             }
@@ -39,7 +40,7 @@ namespace TechStore.Auth.Services.Impl
             {
                 ResponseCode = ResponseCodes.SUCCESS,
                 Message = "Token is valid",
-                Data = new {valid=true}
+                Data = new { valid = true }
             };
         }
         private ServiceResponse InternalServerErrorResult(Exception e)

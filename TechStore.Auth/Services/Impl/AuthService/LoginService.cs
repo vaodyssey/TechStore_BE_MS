@@ -5,21 +5,22 @@ using TechStore.Auth.Repositories;
 using TechStore.Auth.Utils;
 using TechStore.Auth.Utils.JWT;
 
-namespace TechStore.Auth.Services.Impl
+namespace TechStore.Auth.Services.Impl.AuthService
 {
     public class LoginService
     {
         private LoginRequest _request;
         private IUnitOfWork _unitOfWork;
-        private IJWTUtils _jwtUtils;    
+        private IJWTUtils _jwtUtils;
         private User _user;
         private string _jwtToken;
-        public LoginService(IUnitOfWork unitOfWork,IJWTUtils jwtUtils)
-        {            
+        public LoginService(IUnitOfWork unitOfWork, IJWTUtils jwtUtils)
+        {
             _unitOfWork = unitOfWork;
             _jwtUtils = jwtUtils;
         }
-        public ServiceResponse Handle(LoginRequest request) {
+        public ServiceResponse Handle(LoginRequest request)
+        {
             try
             {
                 _request = request;
@@ -42,7 +43,7 @@ namespace TechStore.Auth.Services.Impl
         }
         private bool IsPasswordValid()
         {
-            return PasswordUtils.IsPasswordValid(_request.Password, _user.Password);            
+            return PasswordUtils.IsPasswordValid(_request.Password, _user.Password);
         }
         private void GenerateCredentials()
         {

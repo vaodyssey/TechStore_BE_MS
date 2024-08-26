@@ -9,8 +9,12 @@ using TechStore.Auth.Payload;
 using TechStore.Auth.Repositories;
 using TechStore.Auth.Services;
 
-namespace TechStore.Auth.Test
+namespace TechStore.Auth.Test.Tests.AuthService
 {
+    [TestCaseOrderer(
+    ordererTypeName: "TechStore.Auth.Test.Orderers.TestCaseOrderer",
+    ordererAssemblyName: "TechStore.Auth.Test")]
+    [Collection("AuthServiceTestCollection")]
     public class TokenValidationServiceTest
     {
         private IAuthService _service;
@@ -30,10 +34,10 @@ namespace TechStore.Auth.Test
         }
         private void AssertTokenValid(ServiceResponse response)
         {
-            Assert.Equal(200, response.ResponseCode);
             string objStr = JsonConvert.SerializeObject(response.Data);
             dynamic expandoObj = JsonConvert.DeserializeObject<ExpandoObject>(objStr);
             bool isValid = expandoObj.valid;
+            Assert.Equal(200, response.ResponseCode);
             Assert.Equal(true, isValid);
         }
         private LoginRequest PrepareLoginRequest()

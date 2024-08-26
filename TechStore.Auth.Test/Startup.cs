@@ -18,7 +18,8 @@ namespace TechStore.Auth.Test
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IAuthService,Services.Impl.AuthService>();
+            services.AddTransient<IAuthService, Services.Impl.AuthService.AuthService>();
+            services.AddTransient<IUserService, Services.Impl.UserService.UserService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IJWTUtils, JWTUtils>();
             services.AddAutoMapper(Assembly.Load("TechStore.Auth"));

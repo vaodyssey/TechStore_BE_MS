@@ -18,6 +18,7 @@ namespace TechStore.Products.Test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IProductService, Services.Impl.ProductService>();
+            services.AddTransient<IBrandService, Services.Impl.BrandService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();            
             services.AddAutoMapper(Assembly.Load("TechStore.Products"));
             services.AddDbContext<ProductsDbContext>(
