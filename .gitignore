@@ -1,9 +1,9 @@
 /.vs
-/TechStore.Auth/bin
-/TechStore.Auth/obj
+/TechStore.User/bin
+/TechStore.User/obj
 /TechStore.Products/bin
 /TechStore.Products/obj
-/TechStore.Auth.Test/bin
-/TechStore.Auth.Test/obj
+/TechStore.User.Test/bin
+/TechStore.User.Test/obj
 /TechStore.Products.Test/bin
 /TechStore.Products.Test/obj
