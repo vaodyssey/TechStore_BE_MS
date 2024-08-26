@@ -1,5 +1,8 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using System.Globalization;
+using TechStore.Products.Payload;
 using TechStore.Products.Services;
 
 
@@ -15,30 +18,9 @@ namespace TechStore.Products.Controllers
             _productService = authService;
         }
         [HttpGet("/api/products")]
-        public IActionResult Register(
-            [FromQuery] string searchTerm = null,
-            [FromQuery] string label = null,
-            [FromQuery] int minPrice = 0,
-            [FromQuery] int maxPrice = 0,
-            [FromQuery] string sortBy = null,
-            [FromQuery] string sortOrder = null,
-            [FromQuery] int pageNumber = 0,
-            [FromQuery] int pageSize = 0
-
-            )
+        public IActionResult Register(GetByRequest request)
         {
-            var result = _productService.GetBy(new Payload.GetByRequest
-            {
-                SearchTerm = searchTerm,
-                Label = label,
-                MaxPrice = maxPrice,
-                MinPrice = minPrice,
-                PageNumber = pageNumber,
-                PageSize = pageSize,
-                SortBy = sortBy,
-                SortOrder = sortOrder
-            }
-            );
+            var result = _productService.GetBy(request);
             return StatusCode(result.ResponseCode, result);
 
         }
