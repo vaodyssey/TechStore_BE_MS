@@ -21,6 +21,7 @@ namespace TechStore.User.Utils.JWT
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
+        new Claim("UserId", user.Id.ToString()),
         new Claim(JwtRegisteredClaimNames.Sub, user.Username),
         new Claim(JwtRegisteredClaimNames.Email, user.Email),
         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
@@ -36,14 +37,20 @@ namespace TechStore.User.Utils.JWT
         public bool IsTokenValid(string token)
         {
             var jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
+            string userId = jwt.Claims.First(c => c.Type == "UserId").Value;
             string userName = jwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Sub).Value;
             string email = jwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Email).Value;
             Models.User user = _unitOfWork.UserRepository.Get(user =>
+                user.Id == Int32.Parse(userId) &&
                 user.Email == email &&
                 user.Username == userName).FirstOrDefault();
-
             if (user == null) return false;
             return true;
+        }
+        public string GetJwtClaimByType(string type,string token)
+        {
+            var jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
+            return jwt.Claims.First(c=>c.Type==type).Value;
         }
         private void InitializeConfiguration()
         {

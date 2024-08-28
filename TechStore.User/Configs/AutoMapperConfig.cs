@@ -11,6 +11,7 @@ namespace TechStore.User.Configs
             RegisterRequestAndUser();
             UserAndUserDTO();
             UpdateUserRequestAndUser();
+            NewProductDTOAndOrderDetail();
         }
 
         private void RegisterRequestAndUser()
@@ -24,6 +25,10 @@ namespace TechStore.User.Configs
         private void UpdateUserRequestAndUser()
         {
             CreateMap<UpdateUserRequest, Models.User>();
+        }
+        private void NewProductDTOAndOrderDetail()
+        {
+            CreateMap<NewProductDTO, Models.OrderDetail>().ForMember(orderDetail => orderDetail.Id,options => options.Ignore());
         }
     }
 

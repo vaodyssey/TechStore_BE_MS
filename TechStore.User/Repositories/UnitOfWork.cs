@@ -8,6 +8,9 @@ namespace TechStore.User.Repositories
         private readonly UserDbContext? _dbContext;
         private bool disposed = false;
         private IGenericRepository<Models.User> _UserRepository { get; set; }
+        private IGenericRepository<Models.Order> _OrderRepository { get; set; }
+        private IGenericRepository<Models.OrderDetail> _OrderDetailRepository { get; set; }
+
         public UnitOfWork(UserDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -19,7 +22,20 @@ namespace TechStore.User.Repositories
                 return _UserRepository ??= new GenericRepository<Models.User>(_dbContext!);
             }
         }
-
+        public IGenericRepository<Models.Order> OrderRepository
+        {
+            get
+            {
+                return _OrderRepository ??= new GenericRepository<Models.Order>(_dbContext!);
+            }
+        }
+        public IGenericRepository<Models.OrderDetail> OrderDetailRepository
+        {
+            get
+            {
+                return _OrderDetailRepository ??= new GenericRepository<Models.OrderDetail>(_dbContext!);
+            }
+        }
 
         public void Save()
         {

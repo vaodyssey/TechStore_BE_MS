@@ -14,6 +14,7 @@ namespace TechStore.User.Test
         {
             services.AddTransient<IAuthService, Services.Impl.AuthService.AuthService>();
             services.AddTransient<IUserService, Services.Impl.UserService.UserService>();
+            services.AddTransient<IOrderService, Services.Impl.OrderService.OrderService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IJWTUtils, JWTUtils>();
             services.AddAutoMapper(Assembly.Load("TechStore.User"));

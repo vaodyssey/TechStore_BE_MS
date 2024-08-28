@@ -7,5 +7,6 @@
         public int Status { get; set; } = 0;
         public DateTime CreatedAt { get; set; }
         public virtual User User { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

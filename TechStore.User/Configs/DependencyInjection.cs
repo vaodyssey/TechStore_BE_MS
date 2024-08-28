@@ -113,7 +113,7 @@ namespace TechStore.User.Configs
                 .SetBasePath(Directory.GetCurrentDirectory())
                         .AddJsonFile("appsettings.json", true, true)
                         .Build();
-            var strConn = config["ConnectionStrings:Default"];
+            var strConn = config["ConnectionStrings:Test"];
 
             return strConn;
         }
